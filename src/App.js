@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+
+function Header() {
+  return (
+    <div className="App-header">
+      <h2>React Gobang</h2>
+    </div>
+  );
+}
 
 class Footer extends Component {
   render() {
@@ -12,15 +20,20 @@ class Footer extends Component {
   }
 }
 
+class Game extends Component {
+  render() {
+    return (
+      <div id="App-goban"></div>
+    );
+  }
+}
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <div id="App-goban"></div>
+        <Header />
+        <Game />
         <Footer />
       </div>
     );
