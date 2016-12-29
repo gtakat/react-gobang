@@ -21,6 +21,12 @@
   height: 703px;
 }
 
+.App-masu {
+  border: solid 1px red;
+  width: 37px;
+  height: 37px;
+}
+
 .App-goishi-white {
   left: 0px;
   height: 37px;

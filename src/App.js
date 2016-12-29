@@ -21,9 +21,56 @@ class Footer extends Component {
 }
 
 class Game extends Component {
+  constructor() {
+    super();
+
+    let squares = Array(19);
+    for (let i=0; i<squares.length; i++) {
+      squares[i] = Array(19).fill(null);
+    }
+
+    this.state = {
+      squares
+    }
+  }
+
   render() {
     return (
-      <div id="App-goban"></div>
+      <Goban squares={this.state.squares} />
+    );
+  }
+}
+
+class Goban extends Component {
+  render() {
+    let squares = [];
+
+    for (let i=0; i<19; i++) {
+      for(let j=0; j<19; j++) {
+        let masu = <Masu row={i} col={j} />;
+        squares.push(masu);
+      }
+    }
+    return (
+      <div id="App-goban">
+        <div>{squares}</div>
+      </div>
+    );
+  }
+}
+
+class Masu extends Component {
+  constructor() {
+    super();
+    this.state = {
+      row: null,
+      col: null
+    }
+  }
+  render() {
+    console.log(this.state.row);
+    return (
+      <div className="App-Masu" />
     );
   }
 }
