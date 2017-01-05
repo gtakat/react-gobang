@@ -22,9 +22,10 @@
 }
 
 .App-masu {
-  border: solid 1px red;
   width: 37px;
   height: 37px;
+  position: relative;
+  float: left;
 }
 
 .App-goishi-white {

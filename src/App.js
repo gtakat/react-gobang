@@ -47,7 +47,8 @@ class Goban extends Component {
 
     for (let i=0; i<19; i++) {
       for(let j=0; j<19; j++) {
-        let masu = <Masu row={i} col={j} />;
+        const key = `${i}_${j}`;
+        let masu = <Masu key={key} row={i} col={j} />;
         squares.push(masu);
       }
     }
@@ -68,9 +69,11 @@ class Masu extends Component {
     }
   }
   render() {
-    console.log(this.state.row);
+    console.log(`(${this.props.row},${this.props.col})`);
     return (
-      <div className="App-Masu" />
+      <div className="App-masu">
+        <div className="App-goishi-black" />
+      </div>
     );
   }
 }
