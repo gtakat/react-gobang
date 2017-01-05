@@ -30,14 +30,28 @@ class Game extends Component {
     }
 
     this.state = {
-      squares
+      squares,
+      current: "black"
     }
   }
 
   render() {
     return (
-      <Goban squares={this.state.squares} />
+      <Goban squares={this.state.squares} onClick={(row, col) => this.handleClick(row, col)} />
     );
+  }
+
+  handleClick(row, col) {
+    // console.log(`(${row}, ${col})`);
+    let newSquares = this.state.squares.slice(0);
+    newSquares[row][col] = this.state.current;
+
+    let nextCurrent = this.state.current === "black" ? "white" : "black";
+
+    this.setState({
+      squares: newSquares,
+      current: nextCurrent
+    });
   }
 }
 
@@ -48,7 +62,11 @@ class Goban extends Component {
     for (let i=0; i<19; i++) {
       for(let j=0; j<19; j++) {
         const key = `${i}_${j}`;
-        let masu = <Masu key={key} row={i} col={j} />;
+        let masu = <Masu key={key}
+                         row={i}
+                         col={j}
+                         color={this.props.squares[i][j]}
+                         onClick={() => this.props.onClick(i, j)} />;
         squares.push(masu);
       }
     }
@@ -65,14 +83,21 @@ class Masu extends Component {
     super();
     this.state = {
       row: null,
-      col: null
+      col: null,
+      color: null
     }
   }
   render() {
-    console.log(`(${this.props.row},${this.props.col})`);
+    // console.log(`(${this.props.row},${this.props.col})`);
+    let goishi = "";
+    if (this.props.color === "black") {
+      goishi = <div className="App-goishi-black" />
+    } else if (this.props.color === "white") {
+      goishi = <div className="App-goishi-white" />
+    }
     return (
-      <div className="App-masu">
-        <div className="App-goishi-black" />
+      <div className="App-masu" onClick={() => this.props.onClick()}>
+        {goishi}
       </div>
     );
   }
