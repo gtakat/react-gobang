@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+#App-game {
+
+}
+
 #App-goban {
   background-image: url("./goban19.png");
   margin: 0 auto;

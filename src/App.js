@@ -28,16 +28,20 @@ class Game extends Component {
     for (let i=0; i<squares.length; i++) {
       squares[i] = Array(19).fill(null);
     }
+    squares[9][9] = "black";
 
     this.state = {
       squares,
-      current: "black"
+      current: "white"
     }
   }
 
   render() {
     return (
-      <Goban squares={this.state.squares} onClick={(row, col) => this.handleClick(row, col)} />
+      <div id="App-game">
+        <Gameinfo current={this.state.current} />
+        <Goban squares={this.state.squares} onClick={(row, col) => this.handleClick(row, col)} />
+      </div>
     );
   }
 
@@ -52,6 +56,12 @@ class Game extends Component {
       squares: newSquares,
       current: nextCurrent
     });
+  }
+}
+
+class Gameinfo extends Component {
+  render() {
+    return <div id="App-game-info">Next: {this.props.current}</div>
   }
 }
 
