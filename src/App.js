@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+// const judgement = require('./Judgement');
+import Judgement from './Judgement';
 
 function Header() {
   return (
@@ -48,7 +50,8 @@ class Game extends Component {
 
   handleClick(row, col) {
     // Can not hit if it already exists
-    if (this.state.squares[row][col]) {
+    if (Judgement.validFirstHit(this.state.squares, row, col)) {
+    // if (this.state.squares[row][col]) {
       return;
     }
 
