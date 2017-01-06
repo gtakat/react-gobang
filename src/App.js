@@ -32,7 +32,8 @@ class Game extends Component {
 
     this.state = {
       squares,
-      current: "white"
+      current: "white",
+      step: 1
     }
   }
 
@@ -46,6 +47,11 @@ class Game extends Component {
   }
 
   handleClick(row, col) {
+    // Can not hit if it already exists
+    if (this.state.squares[row][col]) {
+      return;
+    }
+
     // console.log(`(${row}, ${col})`);
     let newSquares = this.state.squares.slice(0);
     newSquares[row][col] = this.state.current;
@@ -54,14 +60,22 @@ class Game extends Component {
 
     this.setState({
       squares: newSquares,
-      current: nextCurrent
+      current: nextCurrent,
+      step: this.state.step + 1
     });
   }
 }
 
 class Gameinfo extends Component {
   render() {
-    return <div id="App-game-info">Next: {this.props.current}</div>
+    return (
+      <div id="App-game-info">
+        <ul>
+          <li id="App-game-info-left">Next player:</li>
+          <li id="App-game-info-right">{renderGoishi(this.props.current)}</li>
+        </ul>
+      </div>
+    );
   }
 }
 
@@ -89,28 +103,23 @@ class Goban extends Component {
 }
 
 class Masu extends Component {
-  constructor() {
-    super();
-    this.state = {
-      row: null,
-      col: null,
-      color: null
-    }
-  }
   render() {
-    // console.log(`(${this.props.row},${this.props.col})`);
-    let goishi = "";
-    if (this.props.color === "black") {
-      goishi = <div className="App-goishi-black" />
-    } else if (this.props.color === "white") {
-      goishi = <div className="App-goishi-white" />
-    }
     return (
       <div className="App-masu" onClick={() => this.props.onClick()}>
-        {goishi}
+        {renderGoishi(this.props.color)}
       </div>
     );
   }
+}
+
+function renderGoishi(color) {
+  let goishi = "";
+  if (color === "black") {
+    goishi = <div className="App-goishi-black" />
+  } else if (color === "white") {
+    goishi = <div className="App-goishi-white" />
+  }
+  return goishi;
 }
 
 class App extends Component {

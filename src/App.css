@@ -6,7 +6,7 @@
   background-color: #222;
   height: 70px;
   margin: 0 0 20px 0;
-  padding: 20px;
+  padding: 10px;
   color: white;
 }
 
@@ -16,7 +16,28 @@
 }
 
 #App-game {
+  text-align: center;
+  width: 703px;
+  margin: 0 auto;
+}
 
+#App-game-info {
+}
+
+#App-game-info ul {
+  /*list-style: none;*/
+  list-style-type: none;
+}
+
+#App-game-info-left {
+  float: left;
+  font-weight: bold;
+  width: 120px;
+  vertical-align: middle;
+}
+
+#App-game-info-right {
+  margin-left: 130px;
 }
 
 #App-goban {
