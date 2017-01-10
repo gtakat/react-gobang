@@ -30,11 +30,11 @@ class Game extends Component {
     for (let i=0; i<squares.length; i++) {
       squares[i] = Array(19).fill(null);
     }
-    squares[9][9] = "black";
+    // squares[9][9] = "black";
 
     this.state = {
       squares,
-      current: "white",
+      current: "black",
       step: 1
     }
   }
@@ -49,9 +49,8 @@ class Game extends Component {
   }
 
   handleClick(row, col) {
-    // Can not hit if it already exists
-    if (Judgement.validFirstHit(this.state.squares, row, col)) {
-    // if (this.state.squares[row][col]) {
+    // check valid hit
+    if (!Judgement.validatesHit(this.state, row, col)) {
       return;
     }
 
