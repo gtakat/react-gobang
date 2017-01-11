@@ -1,5 +1,5 @@
-exports = module.exports = {
-  validatesHit: function(state, row, col) {
+class Judgement {
+  validatesHit(state, row, col) {
     // Can not hit if it already exists
     if (this.existsGoishi(state, row, col)) {
       return false;
@@ -16,20 +16,20 @@ exports = module.exports = {
     }
 
     return true;
-  },
+  }
 
-  existsGoishi: (state, row, col) => {
+  existsGoishi(state, row, col) {
     return !!state.squares[row][col];
-  },
+  }
 
-  validFirstHit: (state, row, col) => {
+  validFirstHit(state, row, col) {
     if (state.step === 1) {
       return (row === 9 && col === 9);
     }
     return true;
-  },
+  }
 
-  validSecondHit: (state, row, col) => {
+  validSecondHit(state, row, col) {
     if (state.step === 2) {
       const areas = {
         8:  [8,9,10],
@@ -42,3 +42,5 @@ exports = module.exports = {
     return true;
   }
 }
+
+export default Judgement;

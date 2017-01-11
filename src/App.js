@@ -50,7 +50,7 @@ class Game extends Component {
 
   handleClick(row, col) {
     // check valid hit
-    if (!Judgement.validatesHit(this.state, row, col)) {
+    if (!(new Judgement()).validatesHit(this.state, row, col)) {
       return;
     }
 
