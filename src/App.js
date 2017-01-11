@@ -26,6 +26,8 @@ class Game extends Component {
   constructor() {
     super();
 
+    this.judgement = new Judgement();
+
     let squares = Array(19);
     for (let i=0; i<squares.length; i++) {
       squares[i] = Array(19).fill(null);
@@ -50,7 +52,7 @@ class Game extends Component {
 
   handleClick(row, col) {
     // check valid hit
-    if (!(new Judgement()).validatesHit(this.state, row, col)) {
+    if (!this.judgement.validatesHit(this.state, row, col)) {
       return;
     }
 
