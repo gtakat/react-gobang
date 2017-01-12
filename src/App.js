@@ -60,6 +60,7 @@ class Game extends Component {
     let newSquares = this.state.squares.slice(0);
     newSquares[row][col] = this.state.current;
 
+    let current = this.state.current;
     let nextCurrent = this.state.current === "black" ? "white" : "black";
 
     this.setState({
@@ -67,6 +68,10 @@ class Game extends Component {
       current: nextCurrent,
       step: this.state.step + 1
     });
+
+    // check winner
+    let winner = this.judgement.calculateWinner(this.state.squares, current, row, col);
+    console.info(winner);
   }
 }
 
