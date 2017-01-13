@@ -43,6 +43,7 @@ class Judgement {
   }
 
   calculateWinner(squares, color, row, col) {
+    console.info(row,col);
 
     // horizontal and vertical line check
     let horizontalCount = 0;
@@ -85,9 +86,9 @@ class Judgement {
         squareEnd = true;
       }
 
-      if (squares[i+horizontalOffset][i+verticalOffset] === color) {
+      if (squares[i+verticalOffset][i+horizontalOffset] === color) {
         slantingCount++;
-        if ((slantingCount === 5) && (squareEnd || (squares[i+horizontalOffset+1][i+verticalOffset+1] !== color))) {
+        if ((slantingCount === 5) && (squareEnd || (squares[i+verticalOffset+1][i+horizontalOffset+1] !== color))) {
           return true;
         }
 
@@ -101,6 +102,7 @@ class Judgement {
     }
 
     // slanting line check 2 (left down to right up direction)
+    // verticalOffset = (18 - row) > (18 - col) ? 18 : 0;
 
     return false;
   }
