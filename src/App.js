@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-// const judgement = require('./Judgement');
 import Judgement from './Judgement';
 
-function Header() {
-  return (
-    <div className="App-header">
-      <h2>React Gobang</h2>
-    </div>
-  );
-}
+const Header = () => (
+  <div className="App-header">
+   <h2>React Gobang</h2>
+  </div>
+);
 
-class Footer extends Component {
+const Footer = () => (
+  <div className="App-footer">
+  Powered by http://www.din.or.jp/~k_inoue/stone/data20040513/download.html
+  </div>
+);
+
+class Gameinfo extends Component {
   render() {
+    let informations = "";
+    if (this.props.winner) {
+      informations =
+        <ul>
+          <li id="App-game-info-left">Winner! :</li>
+          <li id="App-game-info-right">{renderGoishi(this.props.winner)}</li>
+        </ul>
+    } else {
+      informations =
+        <ul>
+          <li id="App-game-info-left">Next player:</li>
+          <li id="App-game-info-right">{renderGoishi(this.props.current)}</li>
+        </ul>
+    }
     return (
-      <div className="App-footer">
-      Powered by http://www.din.or.jp/~k_inoue/stone/data20040513/download.html
+      <div id="App-game-info">
+        {informations}
       </div>
     );
   }
@@ -86,30 +103,6 @@ class Game extends Component {
   }
 }
 
-class Gameinfo extends Component {
-  render() {
-    let informations = "";
-    if (this.props.winner) {
-      informations =
-        <ul>
-          <li id="App-game-info-left">Winner! :</li>
-          <li id="App-game-info-right">{renderGoishi(this.props.winner)}</li>
-        </ul>
-    } else {
-      informations =
-        <ul>
-          <li id="App-game-info-left">Next player:</li>
-          <li id="App-game-info-right">{renderGoishi(this.props.current)}</li>
-        </ul>
-    }
-    return (
-      <div id="App-game-info">
-        {informations}
-      </div>
-    );
-  }
-}
-
 class Goban extends Component {
   render() {
     let squares = [];
@@ -133,15 +126,11 @@ class Goban extends Component {
   }
 }
 
-class Masu extends Component {
-  render() {
-    return (
-      <div className="App-masu" onClick={() => this.props.onClick()}>
-        {renderGoishi(this.props.color)}
-      </div>
-    );
-  }
-}
+const Masu = (props) => (
+  <div className="App-masu" onClick={() => props.onClick()}>
+    {renderGoishi(props.color)}
+  </div>
+);
 
 function renderGoishi(color) {
   let goishi = "";

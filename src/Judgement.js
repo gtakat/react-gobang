@@ -69,7 +69,6 @@ class Judgement {
       } else {
         verticalCount = 0;
       }
-
     }
 
 
@@ -128,7 +127,6 @@ class Judgement {
         break;
       }
     }
-
 
     return false;
   }
