@@ -37,20 +37,27 @@ class Game extends Component {
     this.state = {
       squares,
       current: "black",
-      step: 1
+      step: 1,
+      winner: null,
     }
   }
 
   render() {
     return (
       <div id="App-game">
-        <Gameinfo current={this.state.current} />
+        <Gameinfo current={this.state.current} winner={this.state.winner} />
         <Goban squares={this.state.squares} onClick={(row, col) => this.handleClick(row, col)} />
       </div>
     );
   }
 
   handleClick(row, col) {
+
+    // game end check
+    if (this.state.winner) {
+      return;
+    }
+
     // check valid hit
     if (!this.judgement.validatesHit(this.state, row, col)) {
       return;
@@ -70,19 +77,34 @@ class Game extends Component {
     });
 
     // check winner
-    let winner = this.judgement.calculateWinner(this.state.squares, current, row, col);
-    console.info(winner);
+    let isWin = this.judgement.calculateWinner(this.state.squares, current, row, col);
+    if (isWin) {
+      this.setState({
+        winner: current
+      });
+    }
   }
 }
 
 class Gameinfo extends Component {
   render() {
-    return (
-      <div id="App-game-info">
+    let informations = "";
+    if (this.props.winner) {
+      informations =
+        <ul>
+          <li id="App-game-info-left">Winner! :</li>
+          <li id="App-game-info-right">{renderGoishi(this.props.winner)}</li>
+        </ul>
+    } else {
+      informations =
         <ul>
           <li id="App-game-info-left">Next player:</li>
           <li id="App-game-info-right">{renderGoishi(this.props.current)}</li>
         </ul>
+    }
+    return (
+      <div id="App-game-info">
+        {informations}
       </div>
     );
   }
