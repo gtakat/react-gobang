@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Judgement from './Judgement';
+import Howler from 'howler';
 
 const Header = () => (
   <div className="App-header">
@@ -79,6 +80,13 @@ class Game extends Component {
     if (!this.judgement.validatesHit(this.state, row, col)) {
       return;
     }
+
+    // sound play
+    let sound = new Howler.Howl({
+      src: ['/sounds/igo01.mp3']
+    });
+
+    sound.play();
 
     // console.log(`(${row}, ${col})`);
     let newSquares = this.state.squares.slice(0);
