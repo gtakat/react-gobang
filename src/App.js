@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Judgement from './Judgement';
-import Howler from 'howler';
+import Sound from './Sound';
 
 const Header = () => (
   <div className="App-header">
@@ -45,6 +45,7 @@ class Game extends Component {
     super();
 
     this.judgement = new Judgement();
+    this.sound = new Sound();
 
     let squares = Array(19);
     for (let i=0; i<squares.length; i++) {
@@ -82,11 +83,7 @@ class Game extends Component {
     }
 
     // sound play
-    let sound = new Howler.Howl({
-      src: ['/sounds/igo01.mp3']
-    });
-
-    sound.play();
+    this.sound.play(this.state.current);
 
     // console.log(`(${row}, ${col})`);
     let newSquares = this.state.squares.slice(0);
