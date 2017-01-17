@@ -47,7 +47,7 @@
 }
 
 #App-goban {
-  background-image: url("./goban19.png");
+  background-image: url("./images/goban19.png");
   margin: 0 auto;
   width: 703px;
   height: 703px;
@@ -64,13 +64,13 @@
   left: 0px;
   height: 37px;
   width: 37px;
-  background: url("./goishi19.png") 0 0;
+  background: url("./images/goishi19.png") 0 0;
 }
 
 .App-goishi-black {
   left: 37px;
   height: 37px;
   width: 37px;
-  background: url("./goishi19.png") -37px 0;
+  background: url("./images/goishi19.png") -37px 0;
 }
 
