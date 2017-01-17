@@ -43,8 +43,6 @@ class Judgement {
   }
 
   calculateWinner(squares, color, row, col) {
-    // console.info(row,col,18-row,col);
-
     // horizontal and vertical line check
     let horizontalCount = 0;
     let verticalCount = 0;

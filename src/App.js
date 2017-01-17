@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Judgement from './Judgement';
 import Sound from './Sound';
@@ -85,7 +84,6 @@ class Game extends Component {
     // sound play
     this.sound.play(this.state.current);
 
-    // console.log(`(${row}, ${col})`);
     let newSquares = this.state.squares.slice(0);
     newSquares[row][col] = this.state.current;
 
