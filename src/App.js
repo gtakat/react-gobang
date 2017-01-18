@@ -5,7 +5,7 @@ import Sound from './Sound';
 
 const Header = () => (
   <div className="App-header">
-   <h2>React Gobang</h2>
+    <h2>React Gobang</h2>
   </div>
 );
 
