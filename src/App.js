@@ -3,7 +3,7 @@ import './App.css';
 import Judgement from './Judgement';
 import Sound from './Sound';
 
-const Header = () => (
+export const Header = () => (
   <div className="App-header">
     <h2>React Gobang</h2>
   </div>
@@ -15,7 +15,7 @@ const Footer = () => (
   </div>
 );
 
-class Gameinfo extends Component {
+export class Gameinfo extends Component {
   render() {
     let informations = "";
     if (this.props.winner) {
