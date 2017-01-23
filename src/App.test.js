@@ -47,3 +47,21 @@ describe('<Goban>', () => {
     expect(wrapper.find(Masu)).to.have.length(19*19);
   });
 });
+
+describe('<Masu>', () => {
+  it('render masu black', () => {
+    const wrapper = shallow(<Masu color="black" />);
+    expect(wrapper.contains(<div className="App-goishi-black" />)).to.equal(true);
+  });
+
+  it('render masu white', () => {
+    const wrapper = shallow(<Masu color="white" />);
+    expect(wrapper.contains(<div className="App-goishi-white" />)).to.equal(true);
+  });
+
+  it('render masu none', () => {
+    const wrapper = shallow(<Masu />);
+    expect(wrapper.find(".App-goishi-black").exists()).to.be.false;
+    expect(wrapper.find(".App-goishi-white").exists()).to.be.false;
+  });
+});
