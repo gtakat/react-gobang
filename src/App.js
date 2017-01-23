@@ -9,7 +9,7 @@ export const Header = () => (
   </div>
 );
 
-const Footer = () => (
+export const Footer = () => (
   <div className="App-footer">
   Powered by http://www.din.or.jp/~k_inoue/stone/data20040513/download.html
   </div>
@@ -39,7 +39,7 @@ export class Gameinfo extends Component {
   }
 }
 
-class Game extends Component {
+export class Game extends Component {
   constructor() {
     super();
 
@@ -106,7 +106,7 @@ class Game extends Component {
   }
 }
 
-class Goban extends Component {
+export class Goban extends Component {
   render() {
     let squares = [];
 
@@ -129,7 +129,7 @@ class Goban extends Component {
   }
 }
 
-const Masu = (props) => (
+export const Masu = (props) => (
   <div className="App-masu" onClick={() => props.onClick()}>
     {renderGoishi(props.color)}
   </div>
