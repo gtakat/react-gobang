@@ -36,7 +36,7 @@ describe('Judgement', () => {
 
   describe('first hit', () => {
     let state;
-    beforeAll(() => {
+    beforeEach(() => {
       state = {
         squares,
         step: 1
@@ -126,12 +126,66 @@ describe('Judgement', () => {
       });
     });
 
-    xdescribe('slanting line (left up to right down)', {
+    describe('slanting line (left up to right down)', () => {
+      it('4 continuous', () => {
+        for (let i = 2; i <= 5; i++) {
+          squares[i][i] = "black";
+        }
+        expect(judgement.calculateWinner(squares, "black", 5, 5)).to.be.false;
+      });
 
+      it('5 continuous', () => {
+        for (let i=2; i<=6; i++) {
+          squares[i][i] = "black";
+        }
+        expect(judgement.calculateWinner(squares, "black", 6, 6)).to.be.true;
+      });
+
+      it('6 continuous', () => {
+        for (let i=2; i<=7; i++) {
+          squares[i][i] = "black";
+        }
+        expect(judgement.calculateWinner(squares, "black", 7, 7)).to.be.false;
+      });
+
+      it('5 continuous and stepping 1', () => {
+        for (let i=2; i<=6; i++) {
+          squares[i][i] = "black";
+        }
+        squares[8][8] = "black";
+        expect(judgement.calculateWinner(squares, "black", 6, 6)).to.be.true;
+      });
     });
 
-    xdescribe('slanting line (left down to right up)', {
+    describe('slanting line (left down to right up)', () => {
+      it('4 continuous', () => {
+        for (let i = 2; i <= 5; i++) {
+          squares[15-i][i] = "black";
+        }
+        expect(judgement.calculateWinner(squares, "black", 10, 5)).to.be.false;
+      });
 
+      it('5 continuous', () => {
+        for (let i = 2; i <= 6; i++) {
+          squares[15-i][i] = "black";
+        }
+        expect(judgement.calculateWinner(squares, "black", 9, 6)).to.be.true;
+      });
+
+      it('6 continuous', () => {
+        for (let i = 2; i <= 7; i++) {
+          squares[15-i][i] = "black";
+        }
+        expect(judgement.calculateWinner(squares, "black", 8, 7)).to.be.false;
+      });
+
+      it('5 continuous and stepping 1', () => {
+        for (let i=2; i<=6; i++) {
+          squares[15-i][i] = "black";
+        }
+        squares[15-8][8] = "black";
+        expect(judgement.calculateWinner(squares, "black", 9, 6)).to.be.true;
+      });
     });
   });
 });
