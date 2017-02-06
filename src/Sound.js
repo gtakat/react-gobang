@@ -11,15 +11,6 @@ class Sound {
     });
   }
 
-  getState(color) {
-    if (color === "black") {
-      return this.soundBlack.state();
-    } else if (color === "white") {
-      return this.soundWhite.state();
-    }
-    return false;
-  }
-
   play(color) {
     if (color === "black") {
       this.soundBlack.play();

@@ -7,17 +7,6 @@ describe('sound', () => {
     sound = new Sound();
   });
 
-  // describe('sound status', () => {
-  //   it('black sound status', () => {
-  //     console.info(sound.getState("white"))
-  //     expect(sound.getState("black")).to.equal("loaded");
-  //   });
-  //
-  //   it('invalid status', () => {
-  //     expect(sound.getState("xxx")).to.be.false;
-  //   })
-  // });
-
   describe('sound play', () => {
     it('play black', () => {
       expect(sound.play("black")).to.equal("black");
