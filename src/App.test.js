@@ -13,6 +13,20 @@ it('renders without crashing', () => {
   ])).to.equal(true);
 });
 
+describe('<Header>', () => {
+  it('render header', () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper.is('.App-header')).to.equal(true);
+  });
+});
+
+describe('<Footer>', () => {
+  it('render footer', () => {
+    const wrapper = shallow(<Footer />);
+    expect(wrapper.is('.App-footer')).to.equal(true);
+  });
+});
+
 describe('<Gameinfo> display winner', () => {
   it('win white', () => {
     const wrapper = shallow(<Gameinfo winner="white" />);
