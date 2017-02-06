@@ -130,7 +130,7 @@ export class Goban extends Component {
 }
 
 export const Masu = (props) => (
-  <div className="App-masu" onClick={() => props.onClick()}>
+  <div className="App-masu" id={ `App-masu-${props.row}-${props.col}` } onClick={() => props.onClick()}>
     {renderGoishi(props.color)}
   </div>
 );
